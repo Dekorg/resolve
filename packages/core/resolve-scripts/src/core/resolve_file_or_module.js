@@ -3,7 +3,9 @@ import path from 'path'
 
 import getMonorepoNodeModules from './get_monorepo_node_modules'
 
-const resolveFileOrModule = (query, rewritePath = false) => {
+const resolveFileOrModule = (_query, fallbackQuery) => {
+  const query = _query || fallbackQuery
+
   const customFilePath = path.resolve(process.cwd(), query)
 
   if (fs.existsSync(customFilePath)) {
@@ -11,17 +13,13 @@ const resolveFileOrModule = (query, rewritePath = false) => {
   }
 
   try {
-    const resolvedQuery = require.resolve(query, {
+    require.resolve(query, {
       paths: [
         path.resolve(process.cwd(), 'node_modules'),
         path.resolve(__dirname, '../../node_modules'),
         ...getMonorepoNodeModules()
       ]
     })
-
-    if (rewritePath) {
-      return resolvedQuery
-    }
 
     return query
   } catch (e) {}

@@ -1,0 +1,47 @@
+{
+  "port": 3000,
+  "polyfills": [],
+  "rootPath": "",
+  "staticPath": "static",
+  "staticDir": "static",
+  "distDir": "dist",
+  "aggregates": [],
+  "readModels": [],
+  "viewModels": [],
+  "sagas": [],
+  "apiHandlers": [],
+  "index": "resolve-scripts/es/defaults/client_index.js",
+  "auth": {
+    "strategies": "resolve-scripts/es/defaults/auth_strategies.js"
+  },
+  "redux": {
+    "reducers": {},
+    "middlewares": [],
+    "sagas": [],
+    "enhancers": []
+  },
+  "storageAdapter": {
+    "module": "resolve-storage-lite",
+    "options": {
+      "pathToFile": "event-storage.db"
+    }
+  },
+  "busAdapter": {
+    "module": "resolve-bus-memory",
+    "options": {}
+  },
+  "subscribeAdapter": {
+    "module": "resolve-subscribe-socket.io",
+    "options": {}
+  },
+  "snapshotAdapter": {
+    "module": "resolve-snapshot-lite",
+    "options": {}
+  },
+  "readModelAdapters": {},
+  "jwtCookie": {
+    "name": "jwt",
+    "maxAge": 31536000000
+  },
+  "customConstants": {}
+}
